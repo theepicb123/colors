@@ -1,0 +1,17 @@
+
+var shape = new Shape.Rectangle(0, 0, 50, 50);
+shape.fillColor = new Color(shape.position.x / 1000, shape.position.y / 1000, 0.5);
+
+var shape2;
+
+shape.onMouseDrag = function (event) {
+    shape.position = new Point(shape.position.x + event.delta.x, shape.position.y + event.delta.y);
+    shape.fillColor = new Color(shape.position.x / view.bounds.width, shape.position.y / view.bounds.height, 0.5);
+        shape2 = new Shape.Rectangle(shape.position.x - 25, shape.position.y - 25, shape.bounds.width, shape.bounds.height);
+        shape2.fillColor = new Color(shape.position.x / view.bounds.width, shape.position.y / view.bounds.height, 0.5);
+        shape.bringToFront();
+};
+
+view.onResize = function () {
+    shape.fillColor = new Color(shape.position.x / view.bounds.width, shape.position.y / view.bounds.height, 0.5);
+};
